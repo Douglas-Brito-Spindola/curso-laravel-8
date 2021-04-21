@@ -26,4 +26,17 @@ class PostController extends Controller
 
     	return redirect()->route('posts.index');
     }
+
+    public function show($id){
+
+        // $post = Post::where('id', $id)->first();
+
+        $post = Post::find($id);
+
+        if(!$post){
+            return redirect()->route('posts.index');
+        }
+
+        return view('admin.posts.show', compact('post'));
+    }
 }
